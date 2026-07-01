@@ -4,6 +4,7 @@ import Home from "./Components/Home";
 import AboutCtrin from "./Components/About";
 import ContactCtrin from "./Components/Contact";
 import Banner from "./Components/Banner/Banner";
+import Footer from "./Components/Footer/Footer";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
       <div id="contact">
         <ContactCtrin />
       </div>
+      <Footer/>
     </div>
   );
 };
