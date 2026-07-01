@@ -1,61 +1,105 @@
-import React from 'react';
-// Fixed the import syntax to correctly load your local asset image
-import bannerImg from '../../../src/assets/banner.jpg';
+import React, { useEffect, useState } from "react";
+
+const images = [
+  "/src/assets/banner.jpeg",
+  "/src/assets/banner1.jpeg",
+  "/src/assets/banner2.jpeg",
+  "/src/assets/banner4.jpeg",
+];
 
 const Banner = () => {
+  const [index, setIndex] = useState(0);
+
+  // Auto slide every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const next = () => setIndex((prev) => (prev + 1) % images.length);
+  const prev = () =>
+    setIndex((prev) => (prev - 1 + images.length) % images.length);
+
   return (
-    <div className="relative w-full bg-black py-12 px-4 md:px-8">
-      {/* Container tracking maximum layout line width */}
-      <div className="mx-auto max-w-6xl overflow-hidden rounded-2xl border border-white/20 bg-zinc-950 shadow-2xl">
-        
-        {/* Creative Flex Layout: Text details stack on mobile, sit next to image on desktop */}
-        <div className="flex flex-col lg:flex-row items-stretch">
-          
-          {/* Left Column: Minimalist Typography & Accent Details */}
-          <div className="flex flex-col justify-between p-8 md:p-12 lg:w-2/5 border-b lg:border-b-0 lg:border-r border-white/10 bg-zinc-900/20 backdrop-blur-sm">
-            <div>
-              {/* Subtle design tracker line */}
-              <div className="mb-4 h-[1px] w-12 bg-white" />
-              <p className="text-xs font-bold uppercase tracking-widest text-zinc-500">
-                Est. 2026 / Original Space
-              </p>
-              <h2 className="mt-3 text-3xl font-black tracking-tight text-white sm:text-4xl">
-                THE ART OF <br />
-                THE SHOT.
-              </h2>
-              <p className="mt-4 text-sm leading-relaxed text-zinc-400">
-                Where high-contrast aesthetics meet precision roasting. Capture the texture, taste the shadow.
-              </p>
-            </div>
+    <section className="relative bg-white py-12 px-6 lg:px-10">
+      <div className="max-w-7xl mx-auto overflow-hidden rounded-3xl shadow-2xl">
+        <div className="grid lg:grid-cols-2">
+          {/* LEFT CONTENT */}
+          <div className="bg-[#f7f5f2] p-10 lg:p-16 flex flex-col justify-center">
+            <p className="uppercase tracking-[0.3em] text-sm text-amber-700 font-semibold">
+              Ctrin Interior
+            </p>
 
-            {/* Design Footer Accent */}
-            <div className="mt-8 flex items-center gap-4 text-zinc-600">
-              <span className="text-xs font-mono">01 // BRUSHED MONO</span>
-              <div className="h-[1px] flex-1 bg-zinc-800" />
+            <h1 className="mt-5 text-5xl lg:text-6xl font-bold leading-tight text-gray-900">
+              Transforming
+              <br />
+              Spaces Into
+              <br />
+              Experiences.
+            </h1>
+
+            <p className="mt-6 text-gray-600 text-lg leading-8">
+              Modern interiors crafted with elegance, functionality and timeless
+              aesthetics.
+            </p>
+
+            <div className="mt-10 flex gap-5">
+              <button className="rounded-xl bg-black text-white px-8 py-4 font-semibold hover:bg-gray-800 transition">
+                Get Free Quote
+              </button>
+
+              <button className="rounded-xl border border-black px-8 py-4 font-semibold hover:bg-black hover:text-white transition">
+                View Projects
+              </button>
             </div>
           </div>
 
-          {/* Right Column: Hero Visual Container */}
-          <div className="relative min-h-[300px] sm:min-h-[400px] lg:w-3/5 overflow-hidden group bg-zinc-900">
-            {/* The single main banner image */}
-            <img 
-              src={bannerImg} 
-              alt="Selfie Cafe Aesthetic Banner" 
-              className="absolute inset-0 h-full w-full object-cover grayscale contrast-125 brightness-90 transition-transform duration-700 ease-out group-hover:scale-105"
+          {/* RIGHT CAROUSEL */}
+          <div className="relative h-[500px] overflow-hidden group bg-black">
+            {/* Image */}
+            <img
+              src={images[index]}
+              alt="Interior"
+              className="w-full h-full object-cover object-center scale-105 transition-all duration-700"
             />
-            
-            {/* High-Contrast overlay mask that sharpens the edge profile */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 pointer-events-none" />
 
-            {/* Subtle floating branding indicator on the image canvas */}
-            <div className="absolute bottom-4 right-4 rounded-md border border-white/20 bg-black/60 px-3 py-1 text-[10px] font-mono tracking-widest text-white backdrop-blur-md uppercase">
-              [ RAW FRAME ]
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent"></div>
+
+            {/* Controls */}
+            <button
+              onClick={prev}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 px-3 py-2 rounded-full"
+            >
+              ‹
+            </button>
+
+            <button
+              onClick={next}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 px-3 py-2 rounded-full"
+            >
+              ›
+            </button>
+
+            {/* Dots */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+              {images.map((_, i) => (
+                <div
+                  key={i}
+                  onClick={() => setIndex(i)}
+                  className={`h-2 w-2 rounded-full cursor-pointer transition-all ${
+                    i === index ? "bg-white w-4" : "bg-white/50"
+                  }`}
+                />
+              ))}
             </div>
           </div>
-
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
