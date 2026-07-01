@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function Navbar() {
+export default function Navbar({ currentView, setView }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState('Home');
 
@@ -12,15 +12,23 @@ export default function Navbar() {
     { label: 'Contact', id: 'contact' }
   ];
 
-  // Smooth scroll handler function
-  const handleScroll = (item) => {
+  // Smooth scroll handler function that handles legal view switching safely
+  const handleNavigation = (item) => {
     setActiveItem(item.label);
     setIsOpen(false); // Close mobile drawer if open
 
-    const element = document.getElementById(item.id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // 1. If the user is currently looking at a legal page, force App view back to main layout first
+    if (setView && currentView !== 'main') {
+      setView('main');
     }
+
+    // 2. Allow a micro-timeout context frame for React to mount the DOM blocks if it was hidden
+    setTimeout(() => {
+      const element = document.getElementById(item.id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 80);
   };
 
   return (
@@ -28,7 +36,7 @@ export default function Navbar() {
       <div className="flex items-center justify-between">
         
         {/* Brand Logo & Name */}
-        <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => handleScroll({ label: 'Home', id: 'home' })}>
+        <div className="flex items-center gap-2.5 cursor-pointer" onClick={() => handleNavigation({ label: 'Home', id: 'home' })}>
           <div className="h-8 w-8 rounded-lg bg-slate-900 flex items-center justify-center font-bold text-amber-500 text-lg shadow-sm">
             C
           </div>
@@ -44,25 +52,29 @@ export default function Navbar() {
 
         {/* Desktop Navigation Links */}
         <div className="hidden md:flex items-center gap-1 rounded-xl bg-slate-100/60 p-1 border border-slate-200/40">
-          {navItems.map((item) => (
-            <button
-              key={item.label}
-              onClick={() => handleScroll(item)}
-              className={`px-4 py-1.5 text-xs lg:text-sm font-semibold transition-all duration-300 rounded-lg ${
-                activeItem === item.label
-                  ? 'text-slate-950 bg-white shadow-sm font-bold'
-                  : 'text-slate-500 hover:text-slate-900 hover:bg-white/40'
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
+          {navItems.map((item) => {
+            // Highlight element based on active context state (only if on main view frame)
+            const isItemActive = currentView === 'main' && activeItem === item.label;
+            return (
+              <button
+                key={item.label}
+                onClick={() => handleNavigation(item)}
+                className={`px-4 py-1.5 text-xs lg:text-sm font-semibold transition-all duration-300 rounded-lg ${
+                  isItemActive
+                    ? 'text-slate-950 bg-white shadow-sm font-bold'
+                    : 'text-slate-500 hover:text-slate-900 hover:bg-white/40'
+                }`}
+              >
+                {item.label}
+              </button>
+            );
+          })}
         </div>
 
         {/* Dynamic CTA Button (Desktop) */}
         <div className="hidden md:block">
           <button 
-            onClick={() => handleScroll({ label: 'Estimator', id: 'estimator' })}
+            onClick={() => handleNavigation({ label: 'Estimator', id: 'estimator' })}
             className="bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold text-xs px-4 py-2 rounded-xl transition-colors shadow-sm"
           >
             Calculate Cost
@@ -94,19 +106,22 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col gap-1.5 rounded-xl bg-white p-2.5 border border-slate-200 shadow-inner">
-          {navItems.map((item) => (
-            <button
-              key={item.label}
-              onClick={() => handleScroll(item)}
-              className={`w-full text-left px-3 py-2 text-sm font-medium rounded-lg transition-all ${
-                activeItem === item.label
-                  ? 'bg-amber-50 text-amber-800 font-bold'
-                  : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
+          {navItems.map((item) => {
+            const isItemActive = currentView === 'main' && activeItem === item.label;
+            return (
+              <button
+                key={item.label}
+                onClick={() => handleNavigation(item)}
+                className={`w-full text-left px-3 py-2 text-sm font-medium rounded-lg transition-all ${
+                  isItemActive
+                    ? 'bg-amber-50 text-amber-800 font-bold'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'
+                }`}
+              >
+                {item.label}
+              </button>
+            );
+          })}
         </div>
       </div>
     </nav>
