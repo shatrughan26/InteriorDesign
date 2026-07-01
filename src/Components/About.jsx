@@ -1,89 +1,109 @@
 import React from 'react';
+import { Sparkles, Users, Hammer, ShieldCheck, CheckCircle } from 'lucide-react';
 
-const About = () => {
+export default function AboutCtrin() {
+  const coreServices = [
+    "Residential Interior Design",
+    "Commercial & Office Interiors",
+    "Modular Kitchen and Wardrobe Design",
+    "Turnkey Interior Solutions",
+    "Space Planning and 3D Visualization"
+  ];
+
   return (
-    <section className="w-full bg-black py-20 px-4 md:px-8 font-sans text-white border-t border-white/5">
-      <div className="mx-auto max-w-6xl">
+    <div className="bg-slate-50 text-slate-800 font-sans antialiased py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
         
-        {/* Section Header */}
-        <div className="mb-16">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">// KITCHEN MANIFESTO</span>
-          <h2 className="text-4xl font-black tracking-tight mt-2 sm:text-5xl">
-            CRAFTING THE CONTRAST.
+        {/* Header Tagline & Brand Intro */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-xs font-bold tracking-widest text-amber-600 uppercase bg-amber-50 px-4 py-1.5 rounded-full border border-amber-200">
+            About Ctrin Interior
+          </span>
+          <h2 className="mt-4 text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
+            You Need, We Create.
           </h2>
+          <p className="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed">
+            At Ctrin Interior, we believe that great design is more than just visual appeal — it’s about creating functional, meaningful, and inspiring environments.
+          </p>
         </div>
 
-        {/* Main Content Layout Split */}
-        <div className="flex flex-col lg:flex-row items-stretch gap-12 lg:gap-16">
-          
-          {/* Left Column: Food Concept Paragraphs */}
-          <div className="flex-1 flex flex-col justify-between space-y-6">
-            <div className="space-y-6 text-zinc-400 text-base md:text-lg leading-relaxed">
-              <p>
-                At <strong className="text-white font-semibold">Selfie Café</strong>, we apply an architectural eye to premium global comfort food. We break down traditional dining boundaries to curate a menu that serves everything you crave, executed with high-contrast presentation.
-              </p>
-              <p>
-                Our kitchen balances diverse culinary worlds: from the smoky depth of our traditional <strong className="text-white font-medium">Tandoor</strong> firing station to custom gourmet <strong className="text-white font-medium">Burgers</strong>, artisanal stir-fried <strong className="text-white font-medium">Noodles</strong>, and rich, creamy <strong className="text-white font-medium">Pastas</strong>. Paired with an experimental lineup of signature starters, every single plate is framed to look as striking as it tastes.
-              </p>
-              <p className="text-sm text-zinc-500 italic">
-                Whether you are here for a late-night pasta drop, a quick burger stack, or charred tandoori plates, we serve it with bold execution.
-              </p>
+        {/* Founders Spotlight Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-white p-8 sm:p-12 rounded-3xl shadow-sm border border-slate-100 mb-16">
+          <div className="lg:col-span-7 space-y-6">
+            <div className="flex items-center gap-2 text-amber-600 font-semibold text-sm">
+              <Users className="w-5 h-5" />
+              <span>The Visionaries Behind Ctrin</span>
             </div>
+            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900">
+              A Brother-Sister Duo Redefining Spaces
+            </h3>
+            <p className="text-slate-600 leading-relaxed">
+              Founded by <strong className="text-slate-950 font-semibold">Mr. Sonu Kumar Sharma</strong> and <strong className="text-slate-950 font-semibold">Ms. Shalini Kumari</strong>, Ctrin Interior was established with a shared passion for transforming properties into artistic, precise, and highly innovative spaces.
+            </p>
+            <p className="text-slate-600 leading-relaxed">
+              Our company merges striking artistic imagination with deep technical expertise to deliver complete, hassle-free layout transformations for both modern residential and sophisticated commercial projects.
+            </p>
+          </div>
+          
+          {/* Brand Promise Callout Box */}
+          <div className="lg:col-span-5 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-8 rounded-2xl border border-slate-700 shadow-xl relative overflow-hidden">
+            <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl" />
+            <Sparkles className="text-amber-400 w-8 h-8 mb-4" />
+            <h4 className="text-lg font-bold text-amber-400 mb-2">Our Mission</h4>
+            <p className="text-slate-300 text-sm leading-relaxed">
+              To transform your space into a true reflection of your personality and purpose, seamlessly blending ultimate creativity with peak functionality for timeless, lifelong results.
+            </p>
+          </div>
+        </div>
 
-            {/* Culinary Station Stats */}
-            <div className="pt-8 border-t border-white/5 grid grid-cols-3 gap-4">
-              <div>
-                <span className="block text-2xl font-black text-white">450°C</span>
-                <span className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase">Live Tandoor Clay</span>
+        {/* Core Capabilities Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          
+          {/* Values / Workflow Approach */}
+          <div className="space-y-6 bg-amber-50/40 p-8 rounded-2xl border border-amber-100/70">
+            <h4 className="text-xl font-bold text-slate-900">Why Clients Trust Ctrin</h4>
+            <p className="text-slate-600 text-sm">
+              From initial blue-sky concept sketches to the final turnkey execution, every project we signature reflects absolute dedication to technical perfection and client happiness.
+            </p>
+            
+            <div className="space-y-4 pt-2">
+              <div className="flex gap-3">
+                <Hammer className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                <div>
+                  <h5 className="text-sm font-semibold text-slate-900">Quality Craftsmanship</h5>
+                  <p className="text-xs text-slate-500 mt-0.5">Meticulous attention to physical details and materials ensures longevity.</p>
+                </div>
               </div>
-              <div>
-                <span className="block text-2xl font-black text-white">100%</span>
-                <span className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase">Gourmet Grills</span>
-              </div>
-              <div>
-                <span className="block text-2xl font-black text-white">24/7</span>
-                <span className="text-[10px] font-mono tracking-wider text-zinc-500 uppercase">Comfort Flavors</span>
+              <div className="flex gap-3">
+                <ShieldCheck className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
+                <div>
+                  <h5 className="text-sm font-semibold text-slate-900">Client-Focused Service</h5>
+                  <p className="text-xs text-slate-500 mt-0.5">Your requirements form the foundation of our creative structural decisions.</p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Dynamic Station Profile Blueprint Card */}
-          <div className="w-full lg:w-[420px] rounded-2xl border border-white/10 bg-zinc-950 p-6 md:p-8 flex flex-col justify-between shadow-xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.02),transparent_50%)] pointer-events-none" />
+          {/* List of Main Services */}
+          <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 space-y-6">
+            <h4 className="text-xl font-bold text-slate-900">Our Core Services</h4>
+            <p className="text-slate-600 text-sm">
+              We provide an integrated, end-to-end framework to cater to varying interior spatial demands:
+            </p>
             
-            <div className="relative z-10">
-              <div className="h-[1px] w-8 bg-white mb-6" />
-              <h3 className="text-lg font-bold tracking-tight text-white uppercase">The Culinary Modules</h3>
-              
-              {/* Core Station Subsections */}
-              <ul className="mt-6 space-y-4 text-xs font-mono tracking-wide text-zinc-400">
-                <li className="flex items-start gap-3">
-                  <span className="text-white font-bold">BURGER & STARTER</span>
-                  <span>High-stack, toasted brioche buns alongside crispy, elevated side plates.</span>
+            <ul className="space-y-3">
+              {coreServices.map((service, index) => (
+                <li key={index} className="flex items-center gap-3 text-slate-700 font-medium text-sm sm:text-base">
+                  <CheckCircle className="w-5 h-5 text-amber-600 shrink-0" />
+                  <span>{service}</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-white font-bold">TANDOOR SMOKE</span>
-                  <span>Authentic charcoal-charred marinades crafted with traditional execution.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-white font-bold">PASTA & NOODLE</span>
-                  <span>From wok-tossed street profiles to slow-simmered, rich Italian sauces.</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Bottom Meta Details Tag */}
-            <div className="mt-12 pt-4 border-t border-white/5 flex items-center justify-between text-[9px] font-mono text-zinc-600 relative z-10">
-              <span>EST. 2026 // LINE_MENU ENGINE</span>
-              <span>ALL RIGHTS RESERVED</span>
-            </div>
+              ))}
+            </ul>
           </div>
 
         </div>
 
       </div>
-    </section>
+    </div>
   );
-};
-
-export default About;
+}
