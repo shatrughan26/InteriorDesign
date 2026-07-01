@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({ currentView, setView }) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState("Home");
 
@@ -22,6 +22,14 @@ export default function Navbar() {
         block: "start",
       });
     }
+
+    // 2. Allow a micro-timeout context frame for React to mount the DOM blocks if it was hidden
+    setTimeout(() => {
+      const element = document.getElementById(item.id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 80);
   };
 
   return (
