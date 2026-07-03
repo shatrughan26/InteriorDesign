@@ -7,7 +7,7 @@ import AboutCtrin from "./Components/About";
 import ContactCtrin from "./Components/Contact";
 import Footer from "./Components/Footer/Footer";
 
-import PrivacyPolicy from "./Components/PrivacyPolicy";
+import PrivacyPolicy from "./Components/Privacy";
 import RefundPolicy from "./Components/RefundPolicy";
 import TandC from "./Components/TandC";
 
