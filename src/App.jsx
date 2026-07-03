@@ -5,10 +5,9 @@ import Banner from "./Components/Banner/Banner";
 import Home from "./Components/Home";
 import AboutCtrin from "./Components/About";
 import ContactCtrin from "./Components/Contact";
-import Banner from "./Components/Banner/Banner";
 import Footer from "./Components/Footer/Footer";
 
-import PrivacyPolicy from "./Components/Privacy";
+import PrivacyPolicy from "./Components/PrivacyPolicy";
 import RefundPolicy from "./Components/RefundPolicy";
 import TandC from "./Components/TandC";
 
@@ -51,8 +50,9 @@ const App = () => {
       {/* Contact */}
       <section id="contact" className="pt-24">
         <ContactCtrin />
-      </div>
-      <Footer/>
+      </section>
+
+      <Footer />
     </div>
   );
 };
