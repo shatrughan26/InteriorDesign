@@ -1,33 +1,55 @@
 import React from "react";
 import Navbar from "./Navbar/Navbar";
+
+import Banner from "./Components/Banner/Banner";
 import Home from "./Components/Home";
 import AboutCtrin from "./Components/About";
 import ContactCtrin from "./Components/Contact";
 import Banner from "./Components/Banner/Banner";
 import Footer from "./Components/Footer/Footer";
 
+import PrivacyPolicy from "./Components/Privacy";
+import RefundPolicy from "./Components/RefundPolicy";
+import TandC from "./Components/TandC";
+
 const App = () => {
   return (
     <div className="bg-slate-50 min-h-screen">
-      {/* Global Floating Navigation Bar */}
-      <Navbar />
+      {/* Navbar */}
       <Navbar />
 
-      <div id="home" className="pt-24">
+      {/* Hero Banner */}
+      <section id="home" className="pt-24">
         <Banner />
-        <Home />
-      </div>
+      </section>
 
-      {/* Main Structural Content Sections */}
-      <div id="home" className="pt-24">
+      {/* Home Content */}
+      <section id="services" className="pt-24">
         <Home />
-      </div>
+      </section>
 
-      <div id="about">
+      {/* Privacy Policy */}
+      <section id="privacypolicy" className="pt-24">
+        <PrivacyPolicy />
+      </section>
+
+      {/* Refund Policy */}
+      <section id="refundpolicy" className="pt-24">
+        <RefundPolicy />
+      </section>
+
+      {/* Terms and Conditions */}
+      <section id="termCondition" className="pt-24">
+        <TandC />
+      </section>
+
+      {/* About */}
+      <section id="about" className="pt-24">
         <AboutCtrin />
-      </div>
+      </section>
 
-      <div id="contact">
+      {/* Contact */}
+      <section id="contact" className="pt-24">
         <ContactCtrin />
       </div>
       <Footer/>
