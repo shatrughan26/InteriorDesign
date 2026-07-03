@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 
+import banner from "../../assets/banner.jpeg";
+import banner1 from "../../assets/banner1.jpeg";
+import banner2 from "../../assets/banner2.jpeg";
+import banner4 from "../../assets/banner4.jpeg";
+
 const images = [
-  "/src/assets/banner.jpeg",
-  "/src/assets/banner1.jpeg",
-  "/src/assets/banner2.jpeg",
-  "/src/assets/banner4.jpeg",
+  banner,
+  banner1,
+  banner2,
+  banner4,
 ];
 
 const Banner = () => {
