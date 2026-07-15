@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import { Home } from "lucide-react";
 import Navbar from "./Navbar/Navbar";
 
 import Banner from "./Components/Banner/Banner";
@@ -23,8 +22,6 @@ const App = () => {
 
       {/* Navbar */}
       <Navbar />
-
-      <Route path="/home" element={<Home/>} />
 
       {/* Hero Banner */}
       <section id="home" className="pt-24">
