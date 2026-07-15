@@ -1,1 +1,11 @@
+/* ✅ 1. Font imports must come first */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+/* 2. Then import Tailwind */
 @import "tailwindcss";
+
+/* 3. Your theme overrides */
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+}
